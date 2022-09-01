@@ -16,16 +16,24 @@ public class Car {
     @Column
     private int series;
 
-    @OneToOne(optional = false, mappedBy = "car")
+    @OneToOne(mappedBy = "car")
     private User owner;
 
     public Car() {
     }
-    public Car(long id, String model, int series) {
-        this.id = id;
+
+    public Car(String model, int series) {
         this.model = model;
         this.series = series;
     }
+
+//    public User getOwner() {
+//        return owner;
+//    }
+//
+//    public void setOwner(User owner) {
+//        this.owner = owner;
+//    }
 
     public void setModel(String model) {
         this.model = model;
@@ -35,8 +43,8 @@ public class Car {
         this.series = series;
     }
 
-    public void setUser(User owner) {
-        this.owner = owner;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public long getId() {
@@ -47,11 +55,13 @@ public class Car {
         return model;
     }
 
-    public int getSeries() {
-        return series;
-    }
-
-    public User getOwner() {
-        return owner;
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", series=" + series +
+                ", owner=" + owner +
+                '}';
     }
 }

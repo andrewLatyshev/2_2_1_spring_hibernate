@@ -11,33 +11,34 @@ import java.util.List;
 
 public class MainApp {
    public static void main(String[] args) throws SQLException {
-      AnnotationConfigApplicationContext context = 
-            new AnnotationConfigApplicationContext(AppConfig.class);
+      AnnotationConfigApplicationContext context =
+              new AnnotationConfigApplicationContext(AppConfig.class);
 
-      UserService userService = context.getBean(UserService.class);
+      UserService userService = context.getBean(UserService.class, Car.class);
 
       userService.add(new User("User1", "Lastname1", "user1@mail.ru"));
       userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
       userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
       userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
 
-      Car car1 = new Car();
-      Car car2 = new Car();
-      Car car3 = new Car();
-      Car car4 = new Car();
+      userService.add(new Car("Honda", 7));
+      userService.add(new Car("Toyota", 120));
+      userService.add(new Car("Subaru", 4));
+      userService.add(new Car("Mazda", 6));
 
-      car1.setModel("Honda");
-      car1.setSeries(7);
 
-      car2.setModel("Toyota");
-      car2.setSeries(140);
 
-      car3.setModel("Subaru");
-      car3.setSeries(4);
 
-      car4.setModel("Mazda");
-      car4.setSeries(6);
 
+//      User user1 = new User("User1", "Lastname1", "user1@mail.ru", new Car("Honda", 7));
+//      User user2 = new User("User2", "Lastname2", "user2@mail.ru", new Car("Toyota", 140));
+//      User user3 = new User("User3", "Lastname3", "user3@mail.ru", new Car("Subaru", 4));
+//      User user4 = new User("User4", "Lastname4", "user4@mail.ru", new Car("Mazda", 6));
+//
+//      userService.add(user1);
+//      userService.add(user2);
+//      userService.add(user3);
+//      userService.add(user4);
 
       List<User> users = userService.listUsers();
       for (User user : users) {
