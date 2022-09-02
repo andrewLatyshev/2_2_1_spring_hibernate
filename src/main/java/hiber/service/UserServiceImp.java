@@ -38,4 +38,11 @@ public class UserServiceImp implements UserService {
       carDao.add(car);
    }
 
+   @Transactional
+   @Override
+   public User getUserByCar(String model, int series) {
+      return userDao.getUserByCar(model, series);
+   }
+
+
 }
