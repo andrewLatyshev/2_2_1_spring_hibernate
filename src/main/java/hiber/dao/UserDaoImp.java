@@ -31,9 +31,9 @@ public class UserDaoImp implements UserDao {
       sessionFactory.getCurrentSession().save(car);
    }
 
-//   public User carsList() {
-//      TypedQuery<Car> query = sessionFactory.getCurrentSession().createQuery("From User as u INNER JOIN u.car as uc");
-//      return query.getResultList();
+//   public User getUserById(int car_id) {
+//      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("FROM Car car LEFT OUTER JOIN FETCH car.user WHERE car.id=:car_id");
+//      return query.getSingleResult();
 //   }
 
 

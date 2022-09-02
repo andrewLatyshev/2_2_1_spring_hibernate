@@ -1,5 +1,7 @@
 package hiber.model;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,16 +10,16 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column
+    @Column(name = "Model")
     private String model;
 
-    @Column
+    @Column(name = "Series")
     private int series;
 
     @OneToOne(mappedBy = "car")
-    private User owner;
+    private User user;
 
     public Car() {
     }
@@ -27,32 +29,28 @@ public class Car {
         this.series = series;
     }
 
-//    public User getOwner() {
-//        return owner;
-//    }
-//
-//    public void setOwner(User owner) {
-//        this.owner = owner;
-//    }
+    public String getModel() {
+        return model;
+    }
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public int getSeries() {
+        return series;
     }
 
     public void setSeries(int series) {
         this.series = series;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public User getUser() {
+        return user;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public String getModel() {
-        return model;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -61,7 +59,6 @@ public class Car {
                 "id=" + id +
                 ", model='" + model + '\'' +
                 ", series=" + series +
-                ", owner=" + owner +
                 '}';
     }
 }
